@@ -137,6 +137,16 @@ static const char *micbias_enum_text[] = {
 static SOC_ENUM_SINGLE_DECL(micbias_enum,
 			    WM8737_MIC_PREAMP_CONTROL, 0, micbias_enum_text);
 
+static const char *monomix_enum_text[] = {
+	"Stereo",
+	"Analog",
+	"Digital",
+	"Reserved",
+};
+
+static SOC_ENUM_SINGLE_DECL(monomix_enum,
+			    WM8737_ADC_CONTROL, 7, monomix_enum_text);
+
 static const char *low_cutoff_text[] = {
 	"Low", "High"
 };
@@ -202,6 +212,7 @@ SOC_ENUM("Mic PGA Bias", micbias_enum),
 SOC_SINGLE("ADC Low Power Switch", WM8737_ADC_CONTROL, 2, 1, 0),
 SOC_SINGLE("High Pass Filter Switch", WM8737_ADC_CONTROL, 0, 1, 1),
 SOC_DOUBLE("Polarity Invert Switch", WM8737_ADC_CONTROL, 5, 6, 1, 0),
+SOC_ENUM("Mono Mixing", monomix_enum),
 
 SOC_SINGLE("3D Switch", WM8737_3D_ENHANCE, 0, 1, 0),
 SOC_SINGLE("3D Depth", WM8737_3D_ENHANCE, 1, 15, 0),
